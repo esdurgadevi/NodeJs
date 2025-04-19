@@ -32,3 +32,38 @@ app.listen(PORT,()=>{
 - Loads environment variables from a .env file into process.env. Useful for managing sensitive information like API keys.
 - in our case .env containe package.json
 - Then we get express and expresslayout.
+### Udemy Module 23
+### Node Native modules (File System)
+#### Reading and writing to file(Synchronous)
+```js
+const fs = require('node:fs');
+
+fs.writeFile("message.txt","Om Sai Ram",(err)=>{
+    if(err) throw err;
+    console.log("Success..!");
+})
+
+fs.readFile("message.txt","utf8",(err,data)=>{
+    if(err)
+    {
+        console.log("Error occur!");
+        throw err;
+    }
+    console.log("The Content : ",data);
+})
+```
+#### Reading and writing to file(Asynchronous)
+```js
+async function read()
+{
+    try{
+        const data = await fs.readFile("message.txt","utf8");
+        console.log("The data is :",data);
+    }
+    catch(err){
+        console.error(err);
+    }
+}
+
+read();
+```
